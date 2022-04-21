@@ -1,0 +1,30 @@
+.li {
+    display: flex;
+    border: 1px gray solid;
+    background: #ffffff;
+    font-size: 30px;
+    padding: 10px 5px;
+}
+
+.item-checkbox {
+    width: 30px;
+    height: 20px;
+}
+
+.item-span {
+    flex-grow: 1;
+    flex-shrink: 1;
+    word-break: break-all;
+    max-width: 474px;
+}
+
+.btn-delete {
+    background: url('../../../../assets/delete-button.png');
+    background-size: cover;
+    width: 21px;
+    height: 25px;
+    margin-right: 10px;
+    border: 0;
+    cursor: pointer;
+
+}
