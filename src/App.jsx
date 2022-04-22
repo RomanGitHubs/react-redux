@@ -1,20 +1,33 @@
 import './App.css'
-import Form from './pages/home/component/Form/Form'
-import Header from "./pages/home/component/Header/Header";
-import List from "./pages/home/component/List/List";
-import Footer from "./pages/home/component/Footer/Footer";
+import Form from './components/Form/Form'
+import Header from "./components/Header/Header";
+import List from "./components/List/List";
+import Footer from "./components/Footer/Footer";
 import React, { useState } from "react";
 
-function App() {
-    const [todos, setTodos] = useState([
-            {id:1, text: 'Terminator', isChecked: false},
-            {id:2, text: 'T-200', isChecked: false},
-            {id:3, text: 'Sol Tul Ort Amn ', isChecked: true},
-        ])
+const allTodos = [
+  {id:1, text: 'React', isChecked: false},
+  {id:2, text: 'T-200', isChecked: false},
+  {id:3, text: 'Sol Tul Ort Amn ', isChecked: true},
+]
 
+function App() {
+
+  const [todos, setTodos] = useState(allTodos)
   const [filter, setFilter] = useState('all');
 
-   const getFilteredTodos = () => {
+  const handleInputChange = ({ value }, id) => {
+     const prevList = todos.map((item) =>
+        item.id === id
+          ? {
+            ...item,
+            text: value
+          } : item
+      )
+    setTodos(prevList)
+  };
+
+  const getFilteredTodos = () => {
      if (filter === 'all') {
        return todos;
      }
@@ -47,35 +60,24 @@ function App() {
   }
 
   const toggleTodo = (id) => {
-      const newTodos = todos.map((item) => {
-          if (item.id === id) {
-            return {
-              ...item,
-              isChecked: !item.isChecked
-            }
-          }
-        return item
-      })
-      setTodos(newTodos)
-  }
-
-  const editTodo = (todo) => {
-    const value = todo.text
-    console.log(value)
+    const newTodos = todos.map((item) => {
+      if (item.id === id) {
+        return {
+          ...item,
+          isChecked: !item.isChecked
+        }
+      }
+    return item
+    })
+    setTodos(newTodos)
   }
 
   const checkAllButton = () => {
+    const isAllCheck = todos.every((item => item.isChecked))
     const newTodos = todos.map((item) => {
-      if (todos.every((item => item.isChecked))) {
-        return {
-          ...item,
-          isChecked: false
-        }
-      } else {
-        return {
-          ...item,
-          isChecked: true
-        }
+      return  {
+        ...item,
+        isChecked: !isAllCheck
       }
     })
   setTodos(newTodos)
@@ -88,32 +90,29 @@ function App() {
     setTodos(filteredArray);
   };
 
-  const handleDelete = () => {
-    deleteChecked();
-  };
-
   return (
     <div className="todo-app">
-        <Header />
-        <Form
-          checkAllButton={checkAllButton}
-          addTodo={addTodo}
-          isAllChecked={isAllChecked}
-          todos={todos}
-        />
-
-        <List
-          todos={filteredArray}
-          toggleTodo={toggleTodo}
-          deleteTodos={deleteTodo}
-          editTodo={editTodo}
-        />
+      <Header />
+      <div className="todo-wrapper">
+      <Form
+        checkAllButton={checkAllButton}
+        addTodo={addTodo}
+        isAllChecked={isAllChecked}
+        todos={todos}
+      />
+      <List
+        todos={filteredArray}
+        toggleTodo={toggleTodo}
+        deleteTodos={deleteTodo}
+        handleInputChange={handleInputChange}
+      />
       {!!todos.length && <Footer
         leftTodos={leftTodos}
         filter={filter}
         setFilter={setFilter}
-        onDelete={handleDelete}
+        onDelete={deleteChecked}
       />}
+      </div>
     </div>
   )
 }

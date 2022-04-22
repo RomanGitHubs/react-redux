@@ -1,13 +1,8 @@
-.header {
-    display: flex;
-    flex-direction: column;
-}
-
 .title {
     font-size: 110px;
     line-height: 20px;
     font-weight: 600;
-    font-family: "Abyssinica SIL";
+    font-family: "Abyssinica SIL", serif;
     color: firebrick;
     opacity: 35%;
     text-align: center;

@@ -1,18 +1,28 @@
 import React from 'react';
 import LiItem from "../LiItem/LiItem";
 
-const List = (props) => {
-  const { todos = [], toggleTodo, deleteTodos, editTodo, filter} = props;
+const List = ({
+  todos = [],
+  toggleTodo,
+  deleteTodos,
+  setTodos,
+  setUpdatedItem,
+  updatedItem,
+  handleInputChange,
+}) => {
 
   return (
-    <div className='list'>
+    <div>
       {!!todos.length && todos.map((todo) =>
         <LiItem
           key={todo.id}
           todo={todo}
           toggleTodo={toggleTodo}
           deleteTodo={deleteTodos}
-          editTodo={editTodo}
+          setTodos={setTodos}
+          setUpdatedItem={setUpdatedItem}
+          updatedItem={updatedItem}
+          handleInputChange={handleInputChange}
         />
       )}
     </div>

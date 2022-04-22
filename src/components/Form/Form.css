@@ -1,0 +1,25 @@
+.form {
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+.input-todo {
+    font-size: 30px;
+    height: 40px;
+    padding: 16px 16px 16px 60px;
+    width: 100%;
+    border: 1px solid gray;
+    outline: none;
+    font-family: "Courier 10 Pitch", serif;
+}
+
+.checkbox-all {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    margin: 0 0 0 10px;
+    padding: 0;
+}
