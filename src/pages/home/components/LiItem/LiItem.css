@@ -1,9 +1,10 @@
-.li {
+.li__item {
     display: flex;
     border: 1px gray solid;
     background: #ffffff;
     font-size: 30px;
     padding: 10px 5px;
+
 }
 
 .item-checkbox {
@@ -16,6 +17,7 @@
     flex-shrink: 1;
     word-break: break-all;
     max-width: 474px;
+    font-family: "Courier 10 Pitch", serif;
 }
 
 .btn-delete {
@@ -23,8 +25,16 @@
     background-size: cover;
     width: 21px;
     height: 25px;
-    margin-right: 10px;
+    margin: 0 10px;
     border: 0;
     cursor: pointer;
+}
+
+.edit-todo {
+    font-size: 30px;
+    padding: 0;
+    border: none;
+    font-family: "Courier 10 Pitch", serif;
+    width: 100%;
 
 }

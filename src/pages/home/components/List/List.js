@@ -1,8 +1,11 @@
 import React from 'react';
 import LiItem from "../LiItem/LiItem";
+import { useSelector } from 'react-redux'
+import { selector } from "../../../../store/selectors";
 
-const List = (props) => {
-  const { todos = [], toggleTodo, deleteTodos, editTodo, filter} = props;
+const List = () => {
+
+  const todos = useSelector(selector)
 
   return (
     <div className='list'>
@@ -10,9 +13,6 @@ const List = (props) => {
         <LiItem
           key={todo.id}
           todo={todo}
-          toggleTodo={toggleTodo}
-          deleteTodo={deleteTodos}
-          editTodo={editTodo}
         />
       )}
     </div>
